@@ -23,14 +23,15 @@ int main() {
     Nodes nodes;
     nodes.readMapNodes(xmldoc);
     cout << "# of nodes: " << nodes.getNumMapNodes() << endl;
-    return 0;
+    
 
-    cout << "** Done **" <<endl;
-    cout << "# of calls to node's getID(): " << Node::getCallsToGetID() << endl;
-    cout << "# of nodes created: " << Node::getCreated() << endl;
-    cout << "# of nodes copied: " << Node::getCopied() << endl;
-
+    cout << "** Done **" << endl;
+    cout << "# of calls to node's getID(): " << Node::getCallsToGetID()<< endl;
+    cout << "# of nodes created: " << Node::getCreated()<< endl;
+    cout << "# of nodes copied: " << Node::getCopied()<< endl;
+    cout.flush();
     return 0;
 
 
 }
+

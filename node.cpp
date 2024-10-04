@@ -15,7 +15,6 @@ using namespace std;
 
 //
 // constructor
-//
 Node::Node(long long id, double lat, double lon, bool entrance)
   : ID(id), Lat(lat), Lon(lon), IsEntrance(entrance)
 {
@@ -29,6 +28,7 @@ Node::Node(long long id, double lat, double lon, bool entrance)
   //this->IsEntrance = entrance;
 
   Node::Created++;
+  
 }
 
 //
