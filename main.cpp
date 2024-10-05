@@ -5,6 +5,7 @@
 #include "node.h"
 #include "nodes.h"
 #include "tinyxml2.h"
+#include "buildings.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -22,7 +23,11 @@ int main() {
 
     Nodes nodes;
     nodes.readMapNodes(xmldoc);
+    Buildings buildings;
+    buildings.readMapBuildings(xmldoc);
+
     cout << "# of nodes: " << nodes.getNumMapNodes() << endl;
+    cout << "# of buidlings: " << buildings.getNumMapBuildings() <<endl;
     
 
     cout << "** Done **" << endl;
