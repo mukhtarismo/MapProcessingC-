@@ -27,16 +27,53 @@ int main() {
     buildings.readMapBuildings(xmldoc);
 
     cout << "# of nodes: " << nodes.getNumMapNodes() << endl;
-    cout << "# of buidlings: " << buildings.getNumMapBuildings() <<endl;
-    
+    cout << "# of buildings: " << buildings.getNumMapBuildings() << endl;
+
+    string command;
+    while (true) {
+        cout << "Enter partial or complete building name on campus, or * to list, or $ to end: ";
+        getline(cin, command);
+
+        if (command == "$") {
+            break;
+        } else if (command == "*") {
+            for (const auto& building : buildings.MapBuildings) {
+                cout << building.ID << ": " << building.Name 
+                     << ", " << building.StreetAddress << endl;
+            }
+        } else {
+            bool found = false;
+            for (const auto& building : buildings.MapBuildings) {
+                if (building.Name.find(command) != string::npos) {
+                    found = true;
+                    cout << "Found: " << building.Name << endl;
+                    cout << "Address: " << building.StreetAddress << endl;
+                    cout << "Building ID: " << building.ID << endl;
+                    cout << "Nodes:" << endl;
+                    for (const auto& nodeID : building.NodeIDs) {
+                        double lat, lon;
+                        bool isEntrance;
+                        if (nodes.find(nodeID, lat, lon, isEntrance)) {
+                            cout << "  " << nodeID << ": (" << lat << ", " << lon << ")";
+                            if (isEntrance) cout << " ENTRANCE";
+                            cout << endl;
+                        } else {
+                            cout << "  " << nodeID << ": ** NOT FOUND **" << endl;
+                        }
+                    }
+                    cout << endl;
+                }
+            }
+            if (!found) {
+                cout << "No such building" << endl;
+            }
+        }
+    }
 
     cout << "** Done **" << endl;
-    cout << "# of calls to node's getID(): " << Node::getCallsToGetID()<< endl;
-    cout << "# of nodes created: " << Node::getCreated()<< endl;
-    cout << "# of nodes copied: " << Node::getCopied()<< endl;
+    cout << "# of calls to node's getID(): " << Node::getCallsToGetID() << endl;
+    cout << "# of nodes created: " << Node::getCreated() << endl;
+    cout << "# of nodes copied: " << Node::getCopied() << endl;
     cout.flush();
     return 0;
-
-
 }
-
