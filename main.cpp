@@ -1,3 +1,6 @@
+/*main.cpp*/
+// The main program for map building.
+// Mukhtar Handulle
 #include <string>
 #include <iostream>
 #include "building.h"
@@ -9,18 +12,19 @@
 
 using namespace std;
 using namespace tinyxml2;
-
+/**
+THis is main function. takes file input and returns 0 if program is correct or false or 1 if there is an erro
+*/
 int main() {
     string name;
     cout << "Enter OSM filename: ";
     getline(cin, name);
     XMLDocument xmldoc;
-
     if (osmLoadMapFile(name, xmldoc)==false){
         cout << "error ";
         return 0;
     }
-
+    //This initialized buildings and nodes
     Nodes nodes;
     nodes.readMapNodes(xmldoc);
     Buildings buildings;
@@ -46,7 +50,7 @@ int main() {
             for (const auto& building : buildings.MapBuildings) {
                 if (building.Name.find(command) != string::npos) {
                     found = true;
-                    cout << "Found: " << building.Name << endl;
+                    cout << " " << building.Name << endl;
                     cout << "Address: " << building.StreetAddress << endl;
                     cout << "Building ID: " << building.ID << endl;
                     cout << "Nodes:" << endl;

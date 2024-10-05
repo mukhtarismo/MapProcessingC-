@@ -133,7 +133,7 @@ bool Nodes::find(long long id, double& lat, double& lon, bool& isEntrance) const
   }
 
 
-  // if get here, not found:
+  //  not found:
   return false;
 }
 
