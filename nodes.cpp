@@ -2,7 +2,7 @@
 
 //
 // A collection of nodes in the Open Street Map.
-// 
+// Mukhtar Handulle
 // Prof. Joe Hummel
 // Northwestern University
 // CS 211
@@ -105,39 +105,33 @@ void Nodes::readMapNodes(XMLDocument& xmldoc)
 // true if found and false if not. If found, a copy of the node 
 // is returned via the node parameter, which is passed by reference.
 //
-bool Nodes::find(long long id, double& lat, double& lon, bool& isEntrance) const
+bool Nodes::find(long long id, double& lat, double& lon, bool& isEntrance) const //finds node by its ID and returns lat, long, and entrance
 {
-  //
-  //
+
   // binary search:
   //
-  int low = 0;
-  int high = (int)this->MapNodes.size() - 1;
+  int low = 0; //intilizing lower bound
+  int high = (int)this->MapNodes.size() - 1; //initiliaze upper bound 
 
-  while (low <= high)
+  while (low <= high) //while loop for ocntinuos seraching and range is met
   {
-    int mid = low + (high - low) / 2;
+    int mid = low + (high - low) / 2; //calculates middle index
     
-    if (this->MapNodes[mid].getID() == id)
+    if (this->MapNodes[mid].getID() == id) //checks to see if it maches the search ID
     {
-      lat = this->MapNodes[mid].getLat();
+      lat = this->MapNodes[mid].getLat(); //sets the output with found dataand return true at the end if not found
       lon = this->MapNodes[mid].getLon();
       isEntrance = this->MapNodes[mid].getIsEntrance();
       return true;
     }
-    
-    if (this->MapNodes[mid].getID() < id)
+    if (this->MapNodes[mid].getID() < id) //searches the upper half inf middle element's ID is less 
       low = mid + 1;
     else
       high = mid - 1;
   }
-
-
   //  not found:
   return false;
 }
-
-//
 // accessors 
 
 int Nodes::getNumMapNodes() const {
