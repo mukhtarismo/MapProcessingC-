@@ -30,12 +30,12 @@ void Buildings::readMapBuildings(XMLDocument& xmldoc) //read building data
                 building.add(nodeId);
                 nd = nd->NextSiblingElement("nd");
             }
-            this->MapBuildings.push_back(building);
+            this->MapBuildings.push_back(building); //update hte vector
         }
-        way = way->NextSiblingElement("way");
+        way = way->NextSiblingElement("way"); //moves to the next
     }
 }
-
+//function for getting number of buildings in MapBuidlings and returning the siz
 int Buildings::getNumMapBuildings() const
 {
     return this->MapBuildings.size();
