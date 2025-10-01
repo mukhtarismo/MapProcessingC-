@@ -68,6 +68,3 @@ Enter building name: @     # lists bus stops sorted by Stop ID
 Enter building name: $     # exit
 ** Done **
 ```
-
-
-Project built from course‑provided scaffolding plus my original implementation. Third‑party libraries acknowledged above; API keys kept out of source. Conforms to Northwestern CS 211 academic integrity guidelines.
